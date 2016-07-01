@@ -21,7 +21,7 @@ class News extends Base\MainController
         echo '</pre>';
     }
     
-	public function index($see = '1', $what = null)
+	public function index()
 	{
 		echo view('news/index');
 	}
