@@ -6,8 +6,6 @@ class News extends Base\MainController
     public function __construct()
     {
         $this->news = new App\Models\NewsModel;
-        //parent::__construct();
-        //$this->_siteInfo();
     }
     
     public function hello()
@@ -28,9 +26,8 @@ class News extends Base\MainController
 		echo view('news/index');
 	}
 
-    public function data($name = 'mixinix', $age = 15, $isCodeIgniterFavorite = true, $single = false)
+    public function data($currentPage = null)
     {
-        $currentPage = $name;
         $config = [
             'currentPage' => $currentPage,
             'model' => $this->news,
@@ -39,7 +36,7 @@ class News extends Base\MainController
         
         $data = (new \Libraries\Ardhie1032\Paging)->data($config);
         
-        //echo view('news/pagination_table', $data);
+        echo view('news/pagination_table', $data);
     }
 
 	public function hashId($id)
