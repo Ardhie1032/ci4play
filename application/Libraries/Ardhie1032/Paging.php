@@ -10,7 +10,7 @@
 use \JasonGrimes\Paginator;
 
 /**
- *  Paging Library
+ *  Simple Paging Library
  *  @Author: Ardhie1032
  *  @Github: ardhie1032
  *  @Usage:
@@ -32,8 +32,6 @@ class Paging {
     
 	public function data(array $config = [])
 	{
-        //$db = \Config\Database::connect();
-
         $config = array_merge([
             'currentPage' => null, // or integer
             'returnArray' => false,

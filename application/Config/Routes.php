@@ -76,6 +76,8 @@ $routes->setAutoRoute(true);
 $routes->add('home/(.+)', 'Home::$1');
 $routes->add('/', 'Home::index');
 
+$routes->add('blog', 'Blog\Blog::index');
+
 //$routes->add('news(:segment)', 'News::$1');
 $routes->add('baz/(:any)/(:any)', 'News::data/$2/$1');
 
