@@ -75,6 +75,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->add('home/(.+)', 'Home::$1');
 $routes->add('/', 'Home::index');
+
 $routes->add('blog', 'Blog\Blog::index');
 
 //$routes->add('news(:segment)', 'News::$1');
