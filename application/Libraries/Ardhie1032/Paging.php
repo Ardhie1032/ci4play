@@ -26,6 +26,9 @@ use \JasonGrimes\Paginator;
  *      ];
  *      
  *      $pageData = $paging->get($config);
+ *  
+ *  @param  array $config
+ *  @return array
  */
 
 class Paging {
