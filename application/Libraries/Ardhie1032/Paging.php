@@ -13,6 +13,10 @@ use \JasonGrimes\Paginator;
  *  Simple Paging Library
  *  @Author: Ardhie1032
  *  @Github: ardhie1032
+ *  
+ *  @param  array $config
+ *  @return array
+ *  
  *  @Usage:
  *  
  *      $config = [
@@ -27,8 +31,6 @@ use \JasonGrimes\Paginator;
  *      
  *      $pageData = $paging->get($config);
  *  
- *  @param  array $config
- *  @return array
  */
 
 class Paging {
