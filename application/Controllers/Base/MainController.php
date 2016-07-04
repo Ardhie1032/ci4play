@@ -1,18 +1,33 @@
 <?php namespace Base;
 
-use \CodeIgniter\HTTP\Response;
+use CodeIgniter\HTTP\Response;
+use Config\App as Config;
 
 class MainController extends \CodeIgniter\Controller
 {
-
-    public function __construct()
-    {
-        //echo 'hello?';
-    }
     
+	public $setName = 'Suparman';
+	
 	public function index()
 	{
 		echo view('welcome_message');
+	}
+	
+	public function site_info()
+	{
+		echo view('other_info');
+	}
+
+	public function _getName()
+	{
+		$getName = $this->setName;
+		echo "<h1>Hello {$getName}!</h1>";
+	}
+
+	public function _siteInfo()
+	{
+		$config = new Config;
+		echo '<h1>'.$config->siteTitle.'</h1>';
 	}
 
     public function _outputJSON($data = [], $statusCode = 200)

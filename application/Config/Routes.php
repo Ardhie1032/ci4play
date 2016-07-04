@@ -73,13 +73,12 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->add('home/(.+)', 'Home::$1');
 $routes->add('/', 'Home::index');
+$routes->add('home/(.+)', 'Home::$1');
 
-$routes->add('blog', 'Blog\Blog::index');
-
-//$routes->add('news(:segment)', 'News::$1');
-$routes->add('baz/(:any)/(:any)', 'News::data/$2/$1');
+$routes->add('foo/(:num)', 'News::data/$1');
+$routes->add('baz/(:num)', 'News::data/$1');
+$routes->add('baz/(:num)', 'News::data/$1');
 
 $routes->group('foo', function($routes){
     $routes->add('bar', 'Foo\Bar::index');

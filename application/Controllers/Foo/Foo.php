@@ -1,6 +1,6 @@
 <?php namespace Foo;
 
-class Bar extends \CodeIgniter\Controller
+class Foo extends \CodeIgniter\Controller
 {
 
 	public function index()
@@ -8,11 +8,6 @@ class Bar extends \CodeIgniter\Controller
 		echo view('welcome_message');
 	}
 
-	public function hello($name = 'foo')
-	{
-		echo 'Foo\Bar::hello()<br>';
-		echo "Hello $name";
-	}
 	//--------------------------------------------------------------------
 
 }

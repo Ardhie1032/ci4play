@@ -55,10 +55,6 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
 			APP_NAMESPACE                => realpath(APPPATH),
             // ....
             'Libraries'                  => APPPATH.'Libraries',
-            'BaseController'             => APPPATH . 'Controllers/Base',
-            'Module\Blog'                => APPPATH.'../modules/Blog',
-            // Vendors
-            'JasonGrimes'                => APPPATH.'Vendor/php-paginator/src/JasonGrimes',
 		];
 
 		/**

@@ -283,5 +283,8 @@ class App extends BaseConfig
 
 	//--------------------------------------------------------------------
 
+    public $siteTitle,
+           $siteAuthor
+    ;
 
 }

@@ -1,12 +1,17 @@
 <?php
+
 use CodeIgniter\HTTP\IncomingRequest;
 
-$request = new IncomingRequest(new \Config\App(), new \CodeIgniter\HTTP\URI());
+$request = new IncomingRequest(new Config\App(), new CodeIgniter\HTTP\URI());
 
-$db = \Config\Database::connect('news');
+$db = Config\Database::connect('news');
 
 // Testing log message:
+// Threshold option: All Messages
 log_message('info', 'Awesome Framework!');
+log_message('debug', '???');
+log_message('alert', 'Danger!');
+log_message('error', 'Found?');
 ?>
 <p>
 <h3>The URI being requested (i.e. /about)</h3>
@@ -46,13 +51,4 @@ getPost: <?= $request->getPost('foo') ?>
 <?= $request->uri ?>
 </p>
 
-<h3>Sample Data</h3>
-<?php
-$sql = "SELECT * FROM news";
-$query = $db->query($sql);
-
-echo '<pre>';
-print_r($query->getResult());
-echo '</pre>';
-
-?>
+<?= isset($routesCollection) ?? null ?>

@@ -1,4 +1,4 @@
-<?php namespace Foo;
+<?php namespace Foo\Bar;
 
 class Bar extends \CodeIgniter\Controller
 {

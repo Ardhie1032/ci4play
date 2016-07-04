@@ -3,43 +3,36 @@
 class News extends Base\MainController
 {
 
+	public $setName = 'Ardhie1032';
+
     public function __construct()
     {
         $this->news = new App\Models\NewsModel;
+		$this->_siteInfo();
     }
     
-    public function hello()
-    {
-        echo 1032;
-    }
-    
-    public function collection()
-    {
-        $routes = CodeIgniter\Services::routes(true);
-        echo '<pre>';
-        print_r($routes->getRoutes());
-        echo '</pre>';
-    }
-    
-	public function index()
-	{
-		echo view('news/index');
-	}
-
-    public function data($currentPage = null)
+	/**
+	 *  @url: example.com
+	 *  @param integer $currentPage
+	 */
+    public function index($currentPage = null)
     {
         $config = [
             'currentPage' => $currentPage,
             'model' => $this->news,
-            'urlPattern' => '/news/data/(:num)'
+            'urlPattern' => '/news/index/(:num)'
         ];
         
-        $data = (new \Libraries\Ardhie1032\Paging)->data($config);
+        $data = (new Libraries\Ardhie1032\Paging)->data($config);
         
         echo view('news/pagination_table', $data);
     }
 
-	public function hashId($id)
+	/**
+	 *  @uri: example.com/hash_id/
+	 *  @param integer $id
+	 */
+	public function hash_id($id)
 	{
         $hash_id = $this->news->encodeID($id);
 		echo $hash_id;
@@ -47,43 +40,69 @@ class News extends Base\MainController
         echo $this->news->decodeID($hash_id);
 	}
 
-	public function view()
+	/**
+	 *  Return all datas (where 'deleted' = 0)
+	 *  @uri: example.com/news/view
+	 *  
+	 *  Return specific data (macth the specific 'id')
+	 *  @uri: example.com/news/view/2
+	 *  @param integer $id
+	 */
+	public function view($id = null)
 	{
-        $user = $this->news->findAll();
-
         echo '<pre>';
-        print_r($user);
+
+		if( is_null($id) )
+			$news = $this->news->findAll();
+		else
+			$news = $this->news->find($id);
+		
+		if( is_null($news) )
+			$news = 'Not found!';
+
+        print_r($news);
+		
         echo '</pre>';
 	}
 
-	public function save()
+	/**
+	 *  Save data (insert or create new)
+	 *  @uri: example.com/news/save
+	 *  
+	 *  Save data (update, with spesific 'id')
+	 *  @uri: example.com/news/save/3
+	 *  @param integer $id
+	 */
+	public function save($id = null)
 	{
+		// Create and save
         $data = [
-            'title' => 'testing2',
-            'slug'  => 'testing2',
-            'text'  => 'Testing2'
+            'title' => 'Foo',
+            'slug'  => 'foo',
+            'text'  => 'Hello Foo!'
         ];
+		
+		// Update and save with match the ID
+		if( !is_null($id) )
+			$data['id'] = $id;
 
         $this->news->save($data);
 	}
 
-	public function update()
+	/**
+	 *  Delete data (with spesific 'id')
+	 *  @uri: example.com/news/save/3
+	 */
+	public function delete($id = 1)
 	{
-        $data = [
-            'id'    => 8,
-            'title' => 'news8',
-            'slug'  => 'news8',
-            'text'  => 'News Updated8!'
-        ];
-
-        $this->news->save($data);
+        $this->news->delete($id); // Soft delete
+        # $this->news->delete($id, true); // Permanent delete
 	}
 
-	public function delete()
-	{
-        $this->news->delete(6);
-	}
-
+	/**
+	 *  Return JSON data
+	 *  @uri: example.com/news/ajax
+	 */
     public function ajax()
     {
         $data = ['ardhie' => 1032];
